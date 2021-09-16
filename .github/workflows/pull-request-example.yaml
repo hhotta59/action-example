@@ -1,14 +1,17 @@
-name: check
+name: pull_request check
 on:
   pull_request:
     branches:
       - main
-    types: [closed]
+    types: [synchronize, closed]
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - name: event
+        run: echo "${{ github.event }}"
+  
       - name: sha
         run: echo "${{ github.sha }}"
   
