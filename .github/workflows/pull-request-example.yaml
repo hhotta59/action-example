@@ -21,6 +21,9 @@ jobs:
       - name: sha
         run: echo "${{ github.sha }}"
   
+      - name: merged
+        run: echo "${{ github.event.pull_request.head.sha }}"
+  
       - name: ref
         run: echo "${{ github.ref }}"
 
