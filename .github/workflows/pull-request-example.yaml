@@ -1,0 +1,36 @@
+name: check
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sha
+        run: echo "${{ github.sha }}"
+  
+      - name: ref
+        run: echo "${{ github.ref }}"
+
+      - name: base_ref
+        run: echo "${{ github.base_ref }}"
+
+      - name: head_ref
+        run: echo "${{ github.head_ref }}"
+
+      - name: GITHUB_SHA
+        run: echo "${{ GITHUB_SHA }}"
+
+      - name: GITHUB_REF
+        run: echo "${{ GITHUB_REF }}"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Output the latest commit hash
+        run: echo "$(git rev-parse HEAD^2)"
