@@ -10,11 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: event
-        run: echo "${{ github.event }}"
+        run: echo "${{ github.event_name }}"
+  
+      - name: action
+        run: echo "${{ github.event.action  }}"
+
+      - name: merged
+        run: echo "${{ github.event.pull_request.merged }}"
 
       - name: sha
         run: echo "${{ github.sha }}"
   
+      - name: merged
+        run: echo "${{ github.event.pull_request.head.sha }}"
+
       - name: ref
         run: echo "${{ github.ref }}"
 
